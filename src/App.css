@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Manrope:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
+
+:root {
+  --stone: #ece5d5;      /* parchment — page background */
+  --stone-deep: #ACBCBF; /* card / recessed surface */
+  --ink: #1b2016;        /* basalt — near-black text & dark sections */
+  --ink-soft: #2a3123;   /* lifted ink, e.g. card backgrounds on dark */
+  --lichen: #6f7a4f;     /* moss — links, secondary accents */
+  --rust: #9c4a26;       /* msasa rust — primary accent / CTA */
+  --granite: #837c6c;    /* stone grey — muted text, rules */
+  --gold: #b8923f;       /* dawn — used once, sparingly */
+  --paper-line: rgba(27,32,22,.14);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin:0; background:var(--stone); color:var(--ink); font-family:'Manrope', sans-serif; }
+a { text-decoration:none; color:inherit; }
+img { max-width:100%; }
+::selection { background:var(--rust); color:#fff; }
+:focus-visible { outline:2px solid var(--rust); outline-offset:3px; }
+
+.wrap { width:min(1180px, calc(100% - 64px)); margin-inline:auto; }
+
+/* ---------- signature motif: contour rings ---------- */
+.contour { display:block; }
+.contour path { fill:none; stroke:currentColor; stroke-width:1; }
+.eyebrow-mark { width:15px; height:15px; color:var(--granite); flex:none; }
+.eyebrow.light .eyebrow-mark { color:rgba(249,248,241,.55); }
+.hero-contour { position:absolute; top:-6%; right:-4%; width:min(48vw, 620px); height:auto; color:rgba(249,248,241,.14); pointer-events:none; z-index:1; }
+
+/* ---------- header / nav ---------- */
+.site-header { background:rgba(236,229,213,.94); color:var(--ink); backdrop-filter:blur(10px); border-bottom:1px solid var(--paper-line); }
+.site-header.on-hero { position:absolute; width:100%; z-index:3; color:#fff; background:transparent; border-bottom:0; }
+.site-header:not(.on-hero) .nav-cta { border-color:var(--rust); background:var(--rust); color:#fff; }
+.nav { min-height:105px; display:flex; align-items:center; justify-content:space-between; position:relative; z-index:3; }
+.nav-actions { display:flex; align-items:center; gap:18px; }
+.brand { display:flex; align-items:center; width:158px; }
+.brand-logo { display:block; width:100%; height:62px; object-fit:contain; object-position:left center; mix-blend-mode:multiply; }
+.site-header.on-hero .brand-logo { mix-blend-mode:normal; filter:drop-shadow(0 1px 6px rgba(0,0,0,.35)); }
+.nav-links { display:flex; align-items:center; gap:32px; font:500 12.5px/1 'DM Mono', monospace; letter-spacing:.5px; }
+
+.nav-links a { color:inherit; transition:color .25s ease, transform .25s ease; }
+.nav-links a:hover { color:var(--rust); transform:translateY(-1px); }
+.nav-links > a:not(.nav-cta) { opacity:.9; padding:8px 0; }
+.nav-links > a:not(.nav-cta):hover { opacity:1; }
+.nav-cta { border:1px solid rgba(255,255,255,.65); padding:13px 18px; background:transparent; color:inherit; font-weight:500; }
+.arrow { font-size:16px; margin-left:7px; vertical-align:-1px; }
+.menu-toggle { display:none; background:none; border:0; color:inherit; font-size:22px; cursor:pointer; }
+
+/* ---------- home page fixed backdrop ---------- */
+.home-page { position:relative; background-image:var(--hero-image); background-position:center; background-size:cover; background-repeat:no-repeat; }
+@media (min-width:701px) { .home-page { background-attachment:fixed; } }
+
+/* ---------- hero ---------- */
+.hero-section { min-height:760px; color:#fff; background-image:linear-gradient(90deg, rgba(16,20,13,.6), rgba(16,20,13,.12)); position:relative; overflow:hidden; display:flex; flex-direction:column; }
+.hero-copy { position:relative; z-index:2; flex:1; padding-top:114px; }
+.eyebrow { display:flex; align-items:center; gap:9px; font:500 10px/1 'DM Mono', monospace; letter-spacing:1.8px; margin:0 0 22px; color:var(--granite); text-transform:uppercase; }
+.light { color:#f7f5ec; }
+.hero-copy h1 { font-family:'Fraunces', serif; font-optical-sizing:auto; font-size:clamp(60px,8.2vw,114px); font-weight:500; line-height:.94; letter-spacing:-3px; margin:0 0 28px; }
+.hero-copy h1 i, .intro h2 i, .story-content h2 i, .booking h2 i, .home-cards h3 i, .experience-list h2 i, .page-hero h1 i { font-weight:500; font-style:italic; color:var(--rust); }
+.hero-text { max-width:410px; line-height:1.75; font-size:14px; margin-bottom:30px; color:rgba(255,255,255,.88); }
+.text-link { display:inline-block; font:500 11px/1 'DM Mono', monospace; letter-spacing:.5px; border-bottom:1px solid currentColor; padding-bottom:7px; color:var(--rust); }
+.text-link.light { color:#fff; }
+.hero-footer { position:relative; z-index:2; display:flex; justify-content:space-between; align-items:end; padding-bottom:26px; font-family:'DM Mono', monospace; font-size:9px; letter-spacing:1px; }
+.hero-footer div { display:flex; gap:19px; }
+.hero-footer p { font-family:'Fraunces', serif; font-style:italic; font-size:15px; letter-spacing:0; color:rgba(255,255,255,.9); }
+.compass { display:flex; flex-direction:column; align-items:flex-end; gap:4px; }
+.compass b { font-weight:500; opacity:.7; }
+
+/* ---------- intro ---------- */
+.intro { padding:132px 0 118px; }
+.intro-grid { display:grid; grid-template-columns:1.45fr .65fr; gap:100px; }
+.intro h2, .section-heading h2, .booking h2 { font-family:'Fraunces', serif; font-size:clamp(40px,4.8vw,68px); line-height:1.08; font-weight:500; letter-spacing:-2px; margin:0; }
+.intro-side { padding-top:13px; font-size:14px; line-height:1.8; }
+.intro-side p { margin:0 0 29px; color:var(--ink-soft); }
+
+/* ---------- home cards ---------- */
+.home-cards { padding:120px 0; display:grid; grid-template-columns:1fr 1fr; gap:28px; }
+.home-cards a { background:var(--stone-deep); min-height:250px; padding:38px; position:relative; border-top:2px solid var(--ink); transition:background .25s ease; }
+.home-cards a:hover { background:#d3c8ab; }
+.home-cards a:nth-child(2) { border-top-color:var(--rust); }
+.home-cards span { font:10px 'DM Mono', monospace; letter-spacing:1.5px; color:var(--granite); }
+.home-cards h3 { font:500 42px/1 'Fraunces', serif; letter-spacing:-1.5px; margin:66px 0 0; }
+.home-cards .arrow { position:absolute; right:35px; bottom:30px; font-size:23px; color:var(--rust); }
+
+/* ---------- page hero (interior pages) ---------- */
+.page-hero { min-height:420px; color:#fff; display:flex; align-items:end; padding:65px 0; background-size:cover; background-position:center; position:relative; }
+.page-hero .wrap { position:relative; z-index:2; }
+.page-hero h1 { font:500 clamp(50px,6.8vw,94px)/.96 'Fraunces', serif; letter-spacing:-2.5px; margin:0; }
+.field-mark { position:absolute; right:22px; bottom:24px; top:24px; display:flex; align-items:flex-end; writing-mode:vertical-rl; transform:rotate(180deg); font:10px 'DM Mono', monospace; letter-spacing:2px; color:rgba(255,255,255,.55); border-left:1px solid rgba(255,255,255,.28); padding-left:10px; z-index:2; }
+
+/* ---------- stay ---------- */
+.page-intro { font:500 clamp(26px,3.3vw,46px)/1.26 'Fraunces', serif; max-width:860px; padding-top:96px; }
+.page-intro p { max-width:800px; margin:0; }
+.stay-section { padding:130px 0 145px; }
+.section-heading { display:flex; align-items:end; justify-content:space-between; margin-bottom:58px; }
+.stay-grid { display:grid; grid-template-columns:1fr 1fr; gap:28px; }
+.stay-card.featured { margin-top:88px; }
+.stay-image { height:450px; width:100%; object-fit:cover; display:block; filter:saturate(1.02); }
+.card-line { display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid var(--paper-line); padding:22px 0 15px; }
+.card-line h3 { margin:0; font:500 24px 'Fraunces', serif; }
+.card-line span { font:9px 'DM Mono', monospace; letter-spacing:.8px; color:var(--rust); }
+.stay-card>p { font-size:13px; line-height:1.7; max-width:360px; margin:17px 0 18px; color:var(--ink-soft); }
+
+/* ---------- experiences ---------- */
+.experience-list { padding:80px 0 128px; }
+.experience-list article { display:grid; grid-template-columns:80px 1fr 1fr; gap:30px; border-top:1px solid var(--paper-line); padding:36px 0; align-items:start; }
+.index-num { font:500 12px 'DM Mono', monospace; letter-spacing:1px; color:var(--rust); padding:5px 0; }
+.experience-list h2, .story-content h2 { font:500 33px/1.1 'Fraunces', serif; margin:0; }
+.experience-list p, .story-content div>p { font-size:14px; line-height:1.8; margin:0; color:var(--ink-soft); }
+.experience-list .button { margin-top:40px; }
+
+/* ---------- story ---------- */
+.story-content { padding:116px 0 142px; display:grid; grid-template-columns:1fr 1.5fr; gap:80px; }
+.story-content div { max-width:600px; }
+.story-content h2 { font-size:clamp(38px,4.8vw,64px); letter-spacing:-1.8px; margin-bottom:33px; }
+.story-content div>p { max-width:480px; margin-bottom:21px; }
+
+/* ---------- gallery ---------- */
+.gallery { padding:86px 0 128px; columns:3; column-gap:22px; }
+.gallery figure { margin:0 0 22px; break-inside:avoid; background:var(--stone-deep); position:relative; }
+.gallery img { display:block; width:100%; height:auto; }
+.gallery figcaption { display:flex; gap:10px; align-items:baseline; font:10px 'DM Mono', monospace; letter-spacing:1px; padding:12px 14px; color:var(--ink-soft); }
+.gallery figcaption span { color:var(--rust); font-weight:500; }
+.contact-strip { background:var(--stone-deep); padding:42px 0; }
+.contact-strip .wrap { display:flex; gap:90px; }
+.contact-strip a { font:10px/1.8 'DM Mono', monospace; letter-spacing:1px; color:var(--granite); }
+.contact-strip strong { font:500 14px 'Manrope', sans-serif; letter-spacing:0; color:var(--ink); }
+
+/* ---------- booking ---------- */
+.booking { padding:130px 0; display:grid; grid-template-columns:1fr 1.2fr; gap:90px; }
+.booking>div>p:last-child { font-size:14px; line-height:1.8; margin-top:24px; color:var(--ink-soft); }
+.booking form { padding-top:27px; display:grid; grid-template-columns:1fr 1fr; column-gap:28px; row-gap:26px; }
+.booking label { font:10px 'DM Mono', monospace; letter-spacing:.8px; color:var(--granite); }
+.booking input, .booking select { display:block; width:100%; padding:11px 0 14px; border:0; border-bottom:1px solid var(--granite); background:transparent; color:var(--ink); outline:none; margin-top:5px; font-family:'Manrope', sans-serif; }
+.booking form .button { grid-column:2; justify-self:end; margin-top:4px; }
+.notice { grid-column:1/-1; color:var(--lichen); font-size:13px; margin:0; }
+
+.button { display:inline-block; background:var(--rust); border:1px solid var(--rust); color:#fff; padding:15px 19px; font:11px 'DM Mono', monospace; letter-spacing:.3px; cursor:pointer; transition:filter .2s ease, transform .2s ease; }
+.button:hover, .nav-cta:hover { filter:brightness(1.1); transform:translateY(-1px); }
+
+/* ---------- footer ---------- */
+footer { background:var(--ink); color:var(--stone); padding:60px 0 40px; }
+.footer-grid { display:grid; grid-template-columns:1.25fr .9fr .9fr; gap:36px; align-items:start; padding-bottom:28px; border-bottom:1px solid rgba(236,229,213,.14); }
+.footer-brand { display:flex; flex-direction:column; gap:18px; }
+.footer-brand .brand-logo { mix-blend-mode:normal; background:var(--stone); padding:8px; border-radius:4px; }
+.footer-brand p { font-size:13px; line-height:1.9; margin:0; color:rgba(236,229,213,.75); }
+.footer-nav, .footer-contact { display:flex; flex-direction:column; gap:13px; }
+.footer-nav .eyebrow, .footer-contact .eyebrow { margin:0 0 10px; color:rgba(236,229,213,.55); }
+.footer-nav .eyebrow-mark, .footer-contact .eyebrow-mark { color:rgba(236,229,213,.4); }
+.footer-nav a, .footer-contact a { color:inherit; font-size:13px; line-height:1.9; border-bottom:1px solid transparent; transition:border-color .2s ease, color .2s ease; }
+.footer-nav a:hover, .footer-contact a:hover { color:var(--gold); border-color:var(--gold); }
+.footer-bottom { display:flex; justify-content:space-between; gap:24px; padding-top:24px; font-size:12px; color:rgba(236,229,213,.5); }
+.footer-bottom p { margin:0; }
+.footer-bottom p:first-child { font-weight:500; color:rgba(236,229,213,.75); }
+
+@media (max-width:700px) {
+  .wrap { width:calc(100% - 40px); }
+  .hero-section { min-height:720px; }
+  .hero-contour { width:80vw; top:2%; right:-30%; }
+  .nav { height:auto; padding:18px 0; }
+  .brand { width:120px; }
+  .brand-logo { height:50px; }
+  .nav-links { display:none; }
+  .nav-links.open { display:flex; position:absolute; right:0; top:78px; flex-direction:column; align-items:flex-start; gap:18px; background:var(--ink); color:#fff; padding:24px 22px; min-width:220px; box-shadow:-4px 12px 35px rgba(0,0,0,.2); }
+  .menu-toggle { display:block; }
+  .hero-copy { padding-top:92px; }
+  .hero-copy h1 { letter-spacing:-1.5px; }
+  .hero-footer p { display:none; }
+  .intro { padding:80px 0; }
+  .intro-grid { grid-template-columns:1fr; gap:30px; }
+  .home-cards { grid-template-columns:1fr; padding:64px 0; }
+  .page-hero { min-height:340px; padding-bottom:60px; }
+  .page-hero h1 { letter-spacing:-1.5px; }
+  .field-mark { display:none; }
+  .page-intro { padding-top:64px; }
+  .stay-section { padding:78px 0; }
+  .section-heading { display:block; margin-bottom:42px; }
+  .stay-grid { grid-template-columns:1fr; gap:54px; }
+  .stay-card.featured { margin-top:0; }
+  .stay-image { height:340px; }
+  .experience-list { padding:56px 0 76px; }
+  .experience-list article { grid-template-columns:1fr; gap:14px; }
+  .story-content { padding:70px 0; grid-template-columns:1fr; gap:22px; }
+  .gallery { columns:2; column-gap:12px; padding:48px 0 68px; }
+  .gallery figure { margin-bottom:12px; }
+  .contact-strip .wrap { display:block; }
+  .contact-strip a { display:block; margin-bottom:20px; }
+  .booking { padding:76px 0; grid-template-columns:1fr; gap:20px; }
+  .booking form { grid-template-columns:1fr; }
+  .booking form .button { grid-column:1; justify-self:start; }
+  .footer-grid { grid-template-columns:1fr; gap:25px; }
+  .footer-bottom { flex-direction:column; align-items:flex-start; }
+}
