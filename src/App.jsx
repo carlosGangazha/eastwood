@@ -89,36 +89,106 @@ function Header({ page, menuOpen, setMenuOpen, Link }) {
   </header>
 }
 
-function Home({ Link }) { return <div className="home-page" style={{ '--hero-image': `url(${entrance})` }}>
-  <section className="hero-section">
-    <Contour className="hero-contour" />
-    <div className="hero-copy wrap">
-      <p className="eyebrow light"><Contour className="eyebrow-mark" />MUTOKO · ZIMBABWE</p>
-      <h1>Slow down.<br /><i>Come alive.</i></h1>
-      <p className="hero-text">A private hillside hideaway, thoughtfully made for long mornings, wild landscapes, and unhurried connection.</p>
-      <Link className="text-link light" to="/stay">Discover Eastwood <Arrow /></Link>
+function Home({ Link }) {
+  return (
+    <div className="home-page">
+      <section
+        className="hero-section"
+        style={{
+          backgroundImage: `
+            linear-gradient(
+              90deg,
+              rgba(16,20,13,.60),
+              rgba(16,20,13,.20)
+            ),
+            url(${entrance})
+          `,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        <Contour className="hero-contour" />
+
+        <div className="hero-copy wrap">
+          <p className="eyebrow light">
+            <Contour className="eyebrow-mark" />
+            MUTOKO · ZIMBABWE
+          </p>
+
+          <h1>
+            Slow down.
+            <br />
+            <i>Come alive.</i>
+          </h1>
+
+          <p className="hero-text">
+            A private hillside hideaway, thoughtfully made for long mornings,
+            wild landscapes, and unhurried connection.
+          </p>
+
+          <Link className="text-link light" to="/stay">
+            Discover Eastwood <Arrow />
+          </Link>
+        </div>
+
+        <div className="hero-footer wrap">
+          <div>
+            <span>18° 12' S</span>
+            <span>32° 37' E</span>
+          </div>
+
+          <p>Where the highveld meets the wild.</p>
+
+          <span className="compass">
+            N ↑
+            <b>elevation 1 190m</b>
+          </span>
+        </div>
+      </section>
+
+      <section className="intro wrap">
+        <Eyebrow>A DIFFERENT PACE OF LIFE</Eyebrow>
+
+        <div className="intro-grid">
+          <h2>
+            Set among granite kopjes and <i>golden grassland.</i>
+          </h2>
+
+          <div className="intro-side">
+            <p>
+              Eastwood is a small, soulful lodge in the heart of Mutoko — a
+              place to trade the rush of everyday for the quiet rhythm of the
+              land.
+            </p>
+
+            <Link className="text-link" to="/our-story">
+              Our story <Arrow />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="home-cards wrap">
+        <Link to="/stay">
+          <span>REST BEAUTIFULLY</span>
+          <h3>
+            Places to <i>stay.</i>
+          </h3>
+          <Arrow />
+        </Link>
+
+        <Link to="/gallery">
+          <span>FROM OUR GALLERY</span>
+          <h3>
+            Made with <i>care.</i>
+          </h3>
+          <Arrow />
+        </Link>
+      </section>
     </div>
-    <div className="hero-footer wrap">
-      <div><span>18° 12&rsquo; S</span><span>32° 37&rsquo; E</span></div>
-      <p>Where the highveld meets the wild.</p>
-      <span className="compass">N ↑<b>elevation 1 190m</b></span>
-    </div>
-  </section>
-  <section className="intro wrap">
-    <Eyebrow>A DIFFERENT PACE OF LIFE</Eyebrow>
-    <div className="intro-grid">
-      <h2>Set among granite kopjes and <i>golden grassland.</i></h2>
-      <div className="intro-side">
-        <p>Eastwood is a small, soulful lodge in the heart of Mutoko — a place to trade the rush of everyday for the quiet rhythm of the land.</p>
-        <Link className="text-link" to="/our-story">Our story <Arrow /></Link>
-      </div>
-    </div>
-  </section>
-  <section className="home-cards wrap">
-    <Link to="/stay"><span>REST BEAUTIFULLY</span><h3>Places to <i>stay.</i></h3><Arrow /></Link>
-    <Link to="/gallery"><span>FROM OUR GALLERY</span><h3>Made with <i>care.</i></h3><Arrow /></Link>
-  </section>
-</div> }
+  );
+}
 
 function PageHero({ eyebrow, title, image, mark }) { return <section className="page-hero" style={{ backgroundImage: `linear-gradient(rgba(20,24,17,.5), rgba(20,24,17,.5)), url(${image})` }}>
   <div className="wrap"><p className="eyebrow light"><Contour className="eyebrow-mark" />{eyebrow}</p><h1>{title}</h1></div>
